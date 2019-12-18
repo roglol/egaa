@@ -9,7 +9,15 @@ const handle = app.getRequestHandler()
 const jwt = require('jsonwebtoken');
 const jwtSecret = "mysuperdupersecret";
 
-const uri = `mongodb://granot:granot1717@ds157185.mlab.com:57185/granot`;
+const mongoose = require('mongoose')
+
+mongoose.connect(`mongodb://granot:granot1717@ds157185.mlab.com:57185/granot`,{ useNewUrlParser: true, useUnifiedTopology: true },(err,client)=>{
+  client.close()
+});
+
+const db = mongoose.connection
+
+// MyModel = mongoose.model('Users', { name: { type: String } });
 
 app.prepare()
  .then(() => {
@@ -50,6 +58,10 @@ app.prepare()
     });
 
     server.get('/favicon.ico', (req, res) => res.status(204))
+    server.get('/dado',(req,res)=>{
+      db.collection('Users').insert({name:'kutala',lastname:'butala'})
+      res.send('vaime')
+    })
 
     Api.get("/ping", (req, res) => {
       // random endpoint so that the client can call something
