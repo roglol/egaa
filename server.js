@@ -12,12 +12,13 @@ const jwtSecret = "mysuperdupersecret";
 const mongoose = require('mongoose')
 
 mongoose.connect(`mongodb://granot:granot1717@ds157185.mlab.com:57185/granot`,{ useNewUrlParser: true, useUnifiedTopology: true },(err,client)=>{
-  client.close()
+  // client.close()
 });
 
 const db = mongoose.connection
 
-// MyModel = mongoose.model('Users', { name: { type: String } });
+const User = require('./models/Users');
+
 
 app.prepare()
  .then(() => {
@@ -25,6 +26,7 @@ app.prepare()
      
      const server = express() 
      server.use('/api', Api)
+     server.use('/public', express.static(__dirname + '/public'));
      Api.use(bodyParser.json()) 
      Api.use(bodyParser.urlencoded({extended:true}))
      Api.use(function (req, res, next) {
@@ -44,7 +46,7 @@ app.prepare()
     });
 
     Api.use((req, res, next) => {   
-      if (req.path == '/login') {
+      if (req.path == '/login' || req.path =='/register') {
         return next()
       }
       const token = req.headers.authorization
@@ -80,7 +82,20 @@ app.prepare()
       // return it back
       res.json({ "token": token })
     });
-
+    Api.post("/register", (req, res) => {
+       const body = {...req.body}
+       const newUser = new User({
+         _id: new mongoose.Types.ObjectId(),
+         ...body
+        })
+       newUser.save().then(result=>{
+         console.log(result)
+       }).catch(error=>{
+         console.log(error)
+       })
+    });
+     
+     
      server.get('*', (req,res) =>{
          return handle(req,res)
      })

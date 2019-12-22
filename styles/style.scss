@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url('/public/fonts/Montserrat-Regular.ttf');
+    font-style:normal;
+    font-weight:bold;
+}
+
+
+@font-face {
+    font-family: "Roboto-R";
+    src: url('/public/fonts/Roboto-Regular.ttf');
+    font-style:normal;
+}
+
+@font-face {
+    font-family: "Roboto-M";
+    src: url('/public/fonts/Roboto-Medium.ttf');
+}
+
+@font-face {
+    font-family: "Roboto-B";
+    src: url('/public/fonts/Roboto-Bold.ttf');
+    font-weight:700;
+}
+
+// @import './header.scss';
+html{
+    height:100%;
+    width:100%;
+ 
+}
+
+body{
+    height:100%;
+    width:100%;
+}
+
+.app-header{
+    font-family: "Roboto-B";
+    height: 92px;
+    position: fixed;
+    top: 0;
+    background: white;
+    width: 100%;
+}
