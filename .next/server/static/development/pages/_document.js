@@ -1390,7 +1390,15 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     * Here we use _document.js to add a "lang" propery to the HTML object if
     * one is set on the page.
     **/
-    return __jsx("html", null, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], null), __jsx("body", null, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], null), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], null)));
+    return __jsx("html", null, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], null, __jsx("link", {
+      rel: "stylesheet",
+      href: "https://use.fontawesome.com/releases/v5.6.3/css/all.css",
+      integrity: "sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/",
+      crossorigin: "anonymous"
+    }), __jsx("link", {
+      href: "https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap",
+      rel: "stylesheet"
+    })), __jsx("body", null, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], null), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], null)));
   }
 
 });

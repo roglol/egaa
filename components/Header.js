@@ -2,6 +2,7 @@ import React from 'react';
 
 const Header = () =>{
    return (
+       <header>
        <div className="app-header">
          <div className="nav-left">
              <a href="/">
@@ -9,15 +10,20 @@ const Header = () =>{
              </a>
              <nav>
                  <ul>
-                     <li>Tea</li>
-                     <li>Coffee</li>
-                     <li>Equipment</li>
-                     <li>Accessories</li>
+                     <li>ყავა</li>
+                     <li>ჩაი</li>
+                     <li>აპარატები</li>
+                     <li>აქსესუარები</li>
                  </ul>
              </nav>
          </div>
-         <div className="nav-right"></div>
+         <div className="nav-right">
+         <i className="far fa-heart"></i>
+         <i className="fas fa-shopping-cart"></i>
+         <i className="far fa-user"></i>
+         </div>
        </div>
+       </header>
    )
 }
 
