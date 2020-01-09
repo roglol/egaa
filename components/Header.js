@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import RegistrationForm from './RegistrationForm';
 
-const Header = () =>{
+
+const Header = (props) =>{
+    console.log(props)
     const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
    return (
-       <header>
+       <div className="nav-header">
        <div className="app-header">
          <div className="nav-left">
              <a href="/">
@@ -28,9 +30,9 @@ const Header = () =>{
          <i className="fas fa-shopping-cart"></i>
          <i className="far fa-user" onClick={handleShow}></i>
          </div>
-         <RegistrationForm show={show} handleClose={handleClose} handleShow={handleShow}/>
+         <RegistrationForm show={show} handleClose={handleClose} handleShow={handleShow} props={props}/>
        </div>
-       </header>
+       </div>
    )
 }
 

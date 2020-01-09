@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,FormGroup, Label, Input,Form} from 'reactstrap';
+import Link from 'next/link.js';
+import DialogActions from "./Login";
 
 const RegistrationForm = ({show,handleClose}) =>{
-
+    // console.log(props)
     const Submit = () =>{
         console.log('vaimeee')
     }
@@ -34,6 +36,12 @@ const RegistrationForm = ({show,handleClose}) =>{
         </Form>
       </ModalBody>
         <ModalFooter>
+            <Button onClick={()=>{
+                handleClose()
+                props.router.push('/register')
+            }} color="primary">
+                register
+            </Button>
           <Button color="primary" type="submit" 
           onClick={(e) =>{
               e.preventDefault()

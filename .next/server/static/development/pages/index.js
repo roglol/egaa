@@ -109,7 +109,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const Header = () => {
+const Header = props => {
+  console.log(props);
   const {
     0: show,
     1: setShow
@@ -119,7 +120,9 @@ const Header = () => {
 
   const handleShow = () => setShow(true);
 
-  return __jsx("header", null, __jsx("div", {
+  return __jsx("div", {
+    className: "nav-header"
+  }, __jsx("div", {
     className: "app-header"
   }, __jsx("div", {
     className: "nav-left"
@@ -139,7 +142,8 @@ const Header = () => {
   })), __jsx(_RegistrationForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
     show: show,
     handleClose: handleClose,
-    handleShow: handleShow
+    handleShow: handleShow,
+    props: props
   })));
 };
 
@@ -252,7 +256,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link.js */ "next/link.js");
+/* harmony import */ var next_link_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Login */ "./components/Login.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -260,6 +269,7 @@ const RegistrationForm = ({
   show,
   handleClose
 }) => {
+  // console.log(props)
   const Submit = () => {
     console.log('vaimeee');
   };
@@ -288,6 +298,12 @@ const RegistrationForm = ({
     id: "examplePassword",
     placeholder: "password placeholder"
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    onClick: () => {
+      handleClose();
+      props.router.push('/register');
+    },
+    color: "primary"
+  }, "register"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     color: "primary",
     type: "submit",
     onClick: e => {
@@ -452,7 +468,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Roglol\Desktop\dekori\egaa\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Users\o.focxoria\Desktop\dekori\egaa\pages\index.js */"./pages/index.js");
 
 
 /***/ }),
