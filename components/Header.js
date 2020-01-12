@@ -25,6 +25,9 @@ const Header = (props) =>{
                      <li>აქსესუარები</li>
                  </ul>
              </nav>
+        <button type="button">
+        <i className="fas fa-bars"></i>
+        </button>
          </div>
          <div className="nav-right">
          <i className="far fa-heart"></i>

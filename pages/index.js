@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
 import Header from '../components/Header';
+import ProductContainer from '../components/ProductContainer';
 import Link from 'next/link'
 
 const serverUrl = 'http://localhost:3001';
@@ -31,9 +32,9 @@ class Index extends React.Component {
     return (
       <>
       <Header/>
-      <div className="mevarylevar">
-     vaime
-      </div>
+      <main>
+      <ProductContainer/>
+      </main>
         </>
     )
   }
