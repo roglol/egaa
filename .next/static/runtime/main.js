@@ -5157,7 +5157,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\o.focxoria\\Desktop\\dekori\\egaa\\.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\Roglol\\Desktop\\dekori\\egaa\\.next");
       return error;
     }
   };

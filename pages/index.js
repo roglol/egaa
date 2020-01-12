@@ -1,12 +1,9 @@
 import React from 'react';
-import Link from 'next/link.js';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
-import Login from '../components/Login';
 import Header from '../components/Header';
+import Link from 'next/link'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/style.scss';
 const serverUrl = 'http://localhost:3001';
 
 // set up cookies
@@ -32,24 +29,15 @@ class Index extends React.Component {
 
   render() {
     return (
+      <>
       <Header/>
+      <div className="mevarylevar">
+     vaime
+      </div>
+        </>
     )
   }
 }
 
 export default Index;
 
- // <div>
-      //   <h2>Main page</h2>
-      //   <br></br>
-      //   <button onClick={() => this.onLoginClick()}>Get Token</button>
-      //   <br></br>
-      //   <br></br>
-      //   <Login {...this.props}/>
-      //   <Link href="/secret">
-      //     <a>Secret page</a>
-      //   </Link>
-      //   <Link href="/login">
-      //     <a>Login page</a>
-      //   </Link>
-      // </div >

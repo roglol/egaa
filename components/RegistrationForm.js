@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,FormGroup, Label, Input,Form} from 'reactstrap';
-import Link from 'next/link.js';
-import DialogActions from "./Login";
+import { useRouter } from 'next/router';
+import { connect } from 'react-redux';
+import {authenticate} from '../redux/actions';
 
-const RegistrationForm = ({show,handleClose}) =>{
-    // console.log(props)
+
+const RegistrationForm = ({show,handleClose,authenticate}) =>{
+    const router = useRouter()
+
+    const [email, setEmail] = useState('gialo@gmail.com');
+    const [password, setPassword] = useState('gialodadu');
+
     const Submit = () =>{
-        console.log('vaimeee')
+        authenticate({email,password},'login')
     }
     return (
         <Modal isOpen={show} toggle={handleClose} >
@@ -16,6 +22,8 @@ const RegistrationForm = ({show,handleClose}) =>{
         <FormGroup>
         <Label for="exampleEmail">Email</Label>
         <Input
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
           autoComplete="off"
           type="email"
           name="email"
@@ -26,6 +34,8 @@ const RegistrationForm = ({show,handleClose}) =>{
       <FormGroup>
         <Label for="examplePassword">Password</Label>
         <Input
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
           autoComplete="off"
           type="password"
           name="password"
@@ -38,7 +48,7 @@ const RegistrationForm = ({show,handleClose}) =>{
         <ModalFooter>
             <Button onClick={()=>{
                 handleClose()
-                props.router.push('/register')
+                router.push('/register')
             }} color="primary">
                 register
             </Button>
@@ -56,4 +66,9 @@ const RegistrationForm = ({show,handleClose}) =>{
     )
 }
 
-export default RegistrationForm
+
+
+export default connect(
+  state => state,
+  {authenticate}
+)(RegistrationForm);

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import RegistrationForm from './RegistrationForm';
 
 
+
 const Header = (props) =>{
-    console.log(props)
-    const [show, setShow] = useState(false);
+  
+  const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

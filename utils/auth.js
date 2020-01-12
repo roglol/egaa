@@ -7,12 +7,14 @@ const serverUrl = 'http://localhost:3001';
 
 export async function handleAuthSSR(ctx) {
   let token = null;
-
   // if context has request info aka Server Side
   if (ctx.req) {
     // ugly way to get cookie value from a string of values
     // good enough for demostration
-    token = ctx.req.headers.cookie.replace(/(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    if(ctx.req.headers.cookie){
+      token = ctx.req.headers.cookie.replace(/(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    }
+    
   }
   else {
     // we dont have request info aka Client Side
@@ -20,20 +22,19 @@ export async function handleAuthSSR(ctx) {
   }
 
   try {
-    const response = await axios.get(serverUrl + "/api/token/ping", { headers: { 'Authorization': token } });
-    console.log("token ping:", response.data.msg)
+   await axios.get(serverUrl + "/api/token/ping", { headers: { 'Authorization': token,page:ctx.pathname } });
   } catch (err) {
-    // in case of error
-    console.log(err.response.data.msg);
-    console.log("redirecting back to main page");
+   
+    // in the case of error
     // redirect to login
-    if (ctx.res) {
+    if (ctx.res ) {
       ctx.res.writeHead(302, {
         Location: '/'
       })
       ctx.res.end()
-    } else {
+    } else  {
       Router.push('/')
     }
   }
+
 }

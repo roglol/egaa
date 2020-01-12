@@ -9,7 +9,7 @@ export const setCookie = (key, value) => {
     }
 };
 
-const getCookieFromServer = (key, req) => {
+export const getCookie = (key, req) => {
     if (!req.headers.cookie) {
         return undefined;
     }

@@ -8,6 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case AUTHENTICATE:
+            console.log(action.payload)
             return Object.assign({}, state, { token: action.payload });
         case USER:
             return Object.assign({}, state, { user: action.payload });

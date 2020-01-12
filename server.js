@@ -51,8 +51,7 @@ app.prepare()
       }
       const token = req.headers.authorization
       try {
-        var decoded = jwt.verify(token, jwtSecret);
-        console.log("decoded", decoded)
+        jwt.verify(token, jwtSecret);
       } catch (err) {
         return res.status(401).json({ "msg": err.message })
       }
@@ -65,22 +64,30 @@ app.prepare()
       res.send('vaime')
     })
 
-    Api.get("/ping", (req, res) => {
-      // random endpoint so that the client can call something
-      res.json({ "msg": "pong" })
-    });
 
     Api.get("/token/ping", (req, res) => {
       // random endpoint so that the client can call something
-      res.json({ "msg": "pong" })
+      res.send({'msg':'token is valid'})
     });
 
 
-    Api.get("/login", (req, res) => {
+    Api.post("/login", (req, res) => {
+      const body = {...req.body}
       // generate a constant token, no need to be fancy here
-      const token = jwt.sign({ "username": "Mike" }, jwtSecret, { expiresIn: 6000000000 }) // 1 min token
-      // return it back
-      res.json({ "token": token })
+      User.findOne ({
+        email: body.email,
+        password: body.password
+      }, function(err, user) {
+        if (!user) 
+        {
+          res.status(404).send({message:'No such user was found'})
+        }else{
+          const token = jwt.sign(body, jwtSecret, { expiresIn: 6000000000 }) 
+          res.status(200).send({
+            token
+          })
+        }
+      })
     });
     Api.post("/register", (req, res) => {
        const body = {...req.body}
@@ -89,9 +96,9 @@ app.prepare()
          ...body
         })
        newUser.save().then(result=>{
-         console.log(result)
+         res.status(200).send({message:'Success !'})
        }).catch(error=>{
-         console.log(error)
+        res.status(400).send({message: 'This is a fucking error!'});
        })
     });
      
