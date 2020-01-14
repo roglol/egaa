@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Product from './Product';
 
 const ProductContainer = () =>{
-    return <div className='mevarylevar row'>
+    return (
+        <main>
+    <div className='mevarylevar row'>
         <Product/>
         <Product/>
         <Product/>
@@ -12,6 +14,9 @@ const ProductContainer = () =>{
         <Product/>
         <Product/>
     </div>
+        </main>
+    )
+
 }
 
 export default ProductContainer;

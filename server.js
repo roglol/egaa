@@ -59,12 +59,7 @@ app.prepare()
     });
 
     server.get('/favicon.ico', (req, res) => res.status(204))
-    server.get('/dado',(req,res)=>{
-      db.collection('Users').insert({name:'kutala',lastname:'butala'})
-      res.send('vaime')
-    })
-
-
+    
     Api.get("/token/ping", (req, res) => {
       // random endpoint so that the client can call something
       res.send({'msg':'token is valid'})

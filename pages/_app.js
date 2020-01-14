@@ -9,7 +9,7 @@ import '../styles/style.scss';
 
 
 
-export default withRedux(initStore, { debug: true })(
+export default withRedux(initStore, { debug: true})(
     class MyApp extends App {
         static async getInitialProps({ Component, ctx }) {
             return {
