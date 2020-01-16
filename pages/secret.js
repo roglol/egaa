@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
 import { handleAuthSSR } from '../utils/auth';
+import Link from "./index";
 
 const serverUrl = 'http://localhost:3001';
 
@@ -24,6 +25,9 @@ class Secret extends React.Component {
   render() {
     return (
       <div>
+        {/*<Link href="/">*/}
+          {/*<a>fuckmeeeeeeee</a>*/}
+  {/*</Link>*/}
         <h2>Secret page</h2>
         <p>Only accessible via a valid JWT</p>
         <br></br>
@@ -35,7 +39,8 @@ class Secret extends React.Component {
 }
 
 Secret.getInitialProps = async function(ctx){
-  await handleAuthSSR(ctx)
+  // await handleAuthSSR(ctx)
+  console.log('secret')
 }
 
 export default Secret;

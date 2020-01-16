@@ -58,7 +58,8 @@ app.prepare()
       next()
     });
 
-    server.get('/favicon.ico', (req, res) => res.status(204))
+    server.get('/favicon.ico', (req, res) => res.status(204));
+     server.get("/products/:category", (req, res) => app.render(req, res, `/`, {category:req.params.category}));
     
     Api.get("/token/ping", (req, res) => {
       // random endpoint so that the client can call something
