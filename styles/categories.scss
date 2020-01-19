@@ -1,0 +1,86 @@
+.product-categories{
+    background-color: #F2F2F2;
+    width:100%;
+    padding-top:115px;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.product-buttons{
+    display: flex;
+    width: 1088px;
+    margin: auto;
+    justify-content: center;
+}
+
+.product_counter{
+    width:1088px;
+    margin:auto;
+}
+
+.product_counter h1{
+    margin-bottom:0px;
+    font-size: 30px;
+    font-family: 'BPG 2017 DejaVu Sans Caps';
+    color: #181818;
+    line-height: 35px;
+}
+
+.product_counter p{
+    display: flex;
+    font-size: 12px;
+    font-family: 'BPG 2017 DejaVu Sans Caps';
+    color: #95A5A6;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    line-height: 13px;
+}
+
+figure{
+    position:relative;
+    cursor:pointer;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right:20px;
+    border-radius:15px !important;
+    max-width:162px;
+    width:162px;
+    height:162px;
+}
+figcaption{
+    margin-top:20px;
+    position:absolute;
+    bottom:22px;
+    font-size: 12px;
+    font-family: 'BPG 2017 DejaVu Sans Caps';
+    letter-spacing: 2px;
+    color: #181818;
+    text-align: center;
+}
+figure img{
+    margin-bottom:22.5px;
+    z-index:1;
+}
+
+figure::before{
+    content: " ";
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    background: #D1202F;
+    position: absolute;
+    top: 25px;
+    left: 37px;
+    z-index: 0;
+}
+figure:hover{
+    background:#fff;
+}

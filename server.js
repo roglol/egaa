@@ -18,12 +18,13 @@ mongoose.connect(`mongodb://granot:granot1717@ds157185.mlab.com:57185/granot`,{ 
 const db = mongoose.connection
 
 const User = require('./models/Users');
+const Product = require('./models/Products');
+const Category = require('./models/Categories');
 
 
 app.prepare()
  .then(() => {
-     const Api = express.Router()
-     
+     const Api = express.Router()  
      const server = express() 
      server.use('/api', Api)
      server.use('/public', express.static(__dirname + '/public'));
@@ -46,7 +47,7 @@ app.prepare()
     });
 
     Api.use((req, res, next) => {   
-      if (req.path == '/login' || req.path =='/register') {
+      if (req.path == '/login' || req.path =='/register' || req.path == '/products') {
         return next()
       }
       const token = req.headers.authorization
@@ -97,6 +98,37 @@ app.prepare()
         res.status(400).send({message: 'This is a fucking error!'});
        })
     });
+
+    Api.post("/categories", (req,res) =>{
+      const body = {...req.body}
+      const newCategory = new Category({
+        _id: new mongoose.Types.ObjectId(),
+        ...body
+       })
+       newCategory.save().then(result=>{
+        res.status(200).send({message:'Success !'})
+      }).catch(error=>{
+       res.status(400).send({message: 'This is a fucking error!'});
+      })
+    })
+    Api.post("/products", (req,res) =>{
+      const body = {...req.body}
+      const newProduct = new Product({
+        _id: new mongoose.Types.ObjectId(),
+        ...body
+       })
+       newProduct.save().then(result=>{
+        res.status(200).send({message:'Success !'})
+      }).catch(error=>{
+       res.status(400).send({message: 'This is a fucking error!'});
+      })
+    })
+
+    Api.get("/categories", (req,res) =>{
+      Category.find({}, function(err, categories) {
+      res.send(categories);  
+    })
+  })
      
      
      server.get('*', (req,res) =>{
