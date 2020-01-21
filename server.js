@@ -124,6 +124,12 @@ app.prepare()
       })
     })
 
+     Api.get("/products", (req,res) => {
+         Product.find({}, function (err, products) {
+             res.send(products);
+         })
+     })
+
     Api.get("/categories", (req,res) =>{
       Category.find({}, function(err, categories) {
       res.send(categories);  
