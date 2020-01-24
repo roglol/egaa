@@ -10,10 +10,9 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_PRODUCTS_SUCCESS:
-            console.log(action.payload.data)
             return {
                 ...state,
-                products: action.payload.data
+                products: action.payload
             }
         case FETCH_PRODUCTS_FAILURE:
             return {

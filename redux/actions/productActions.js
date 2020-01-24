@@ -5,12 +5,13 @@ import { API } from '../../config';
 
 
 
-export const fetchProducts = () => dispatch =>{
-        axios.get(API + '/products')
-            .then(products =>
-            dispatch({
-                    type: FETCH_PRODUCTS_SUCCESS,
-                    payload: products
-                })
+export const fetchProducts = () => async dispatch =>{
+        await axios.get(API + '/products')
+            .then(products => {
+                    dispatch({
+                        type: FETCH_PRODUCTS_SUCCESS,
+                        payload: products.data
+                    })
+            }
             )
 }

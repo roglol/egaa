@@ -28,6 +28,7 @@ app.prepare()
      const server = express() 
      server.use('/api', Api)
      server.use('/public', express.static(__dirname + '/public'));
+
      Api.use(bodyParser.json()) 
      Api.use(bodyParser.urlencoded({extended:true}))
      Api.use(function (req, res, next) {
