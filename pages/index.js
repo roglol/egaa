@@ -13,12 +13,9 @@ const Products = (props) => {
 
     return (
         <>
-            {/*<Header/>*/}
-            {/*<Categories/>*/}
-            {/*<ProductContainer/>*/}
-            {console.log(props)}
-            <div>vaime</div>
-            <button onClick={fetchProducts}>fuckyou</button>
+            <Header/>
+            <Categories/>
+            <ProductContainer data = {props.products}/>
         </>
     )
   }

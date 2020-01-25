@@ -48,7 +48,7 @@ app.prepare()
     });
 
     Api.use((req, res, next) => {   
-      if (req.path == '/login' || req.path =='/register' || req.path == '/products') {
+      if (req.path == '/login' || req.path =='/register' || req.path == '/products' || req.path =='/product') {
         return next()
       }
       const token = req.headers.authorization
@@ -61,8 +61,25 @@ app.prepare()
     });
 
     server.get('/favicon.ico', (req, res) => res.status(204));
-     server.get("/products/:category", (req, res) => app.render(req, res, `/`, {category:req.params.category}));
-    
+    server.get("/products", (req,res) =>{
+      app.render(req, res, `/`);
+    })
+    server.get("/products/:title", (req, res) => {
+       let param = req.params.title.split('-')
+       let id = param[param.length-1]
+       Product.findOne ({
+        _id:id
+      }, function(err, product) {
+        if (!product) 
+        {
+          console.log(err)
+          app.render(req, res, "/_error")
+        }else{
+          console.log(product)
+          app.render(req, res, `/products/[title]`, {title:req.params.title, product:product});
+        }
+  })
+    })
     Api.get("/token/ping", (req, res) => {
       // random endpoint so that the client can call something
       res.send({'msg':'token is valid'})
@@ -130,6 +147,22 @@ app.prepare()
              res.send(products);
          })
      })
+     Api.get("/product", (req,res) => {
+       const id = req.query.id
+       Product.findOne ({
+        _id:id
+      }, function(err, product) {
+        if (!product) 
+        {
+          res.status(204).send({message:'No such product was found'})
+        }else{
+          res.status(200).send({
+            product
+          })
+        }
+  })
+})
+
 
     Api.get("/categories", (req,res) =>{
       Category.find({}, function(err, categories) {
