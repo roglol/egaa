@@ -9,6 +9,8 @@ import { fetchProducts } from '../redux/actions';
 
 // https://www.fumoney.com/the-one-skill?cf_uvid=64617b1619b8b8ed16a7d0d1915cffb4
 
+// me var koronavirusi dagetakebi shig gulshi dagmarteb pnevmoniasa mogitynav kuchs da gliasa
+
 const Products = (props) => {
 
     return (
